@@ -1,84 +1,54 @@
-# ⚡ 01 - مسار جافا سكريبت الأساسي | JavaScript Core Track
+# ⚡ 01 - JavaScript Core Track
 
-> **بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ**
->
-> 🌐 **اللغة / Language:** [العربية 🇸🇦](#-نظرة-عامة-على-المسار) | [English 🇬🇧](#-track-overview-english)
+> 🌐 **Language:** **English** | [🇸🇦 النسخة العربية (README.ar.md)](./README.ar.md)
 
----
-
-## 🇸🇦 نظرة عامة على المسار
-
-مسار **JavaScript Core** يركز على الفهم العميق للغة جافا سكريبت، وسلوكها الداخلي، وتفاعلها مع المتصفح والـ DOM وخوادم الويب. هذا المسار مقسم إلى **3 مستويات متدرجة** تأخذك من الصفر وحتى تحليل الأكواد المعقدة.
-
-> [!IMPORTANT]
-> **نقطة جوهرية: فصل الأساسيات (Core) عن اختبار الاختراق (Web Pentesting)**  
-> - **JavaScript Core:** تعلم اللغة، وكيف يفسر المحرك الكود، وكيف يتفاعل مع صفحة الويب والمستخدم والسيرفر.
-> - **JavaScript for Web Pentesting:** تطبيق هذه المعرفة لاكتشاف واستغلال الثغرات البرمجية في المتصفح مثل: DOM-based XSS، DOM-based Open Redirect، Prototype Pollution، و postMessage Misconfigurations.  
-> *الأساس السليم في الـ Core (وخاصة Level 2) هو المفتاح لاحتراف اكتشاف الثغرات لاحقاً!*
+Welcome to the **JavaScript Core Track**! This track is designed for software engineers, web developers, and security practitioners who seek a deep, unambiguous understanding of the JavaScript language, its runtime environments, execution contexts, and browser interactions.
 
 ---
 
-## 🗺️ مستويات المسار (Track Levels)
+## 🧭 The JavaScript Core Journey (Roadmap)
 
-| المستوى | الهدف | المشروع الختامي | الرابط |
-| :--- | :--- | :--- | :--- |
-| **Level 1 — Basic** | فهم أساسيات اللغة، القراءة والكتابة السليمة، والمنطق البرمجي. | **JavaScript Logic Toolkit** | [عرض المستوى](./Level-1-Basic/README.md) |
-| **Level 2 — Foundation** | جافا سكريبت الحقيقية داخل المتصفح، التعامل مع الـ DOM، والأحداث، والـ APIs. | **API Explorer** | [عرض المستوى](./Level-2-Foundation/README.md) |
-| **Level 3 — Advanced** | السلوك الداخلي، الـ Event Loop، الـ Prototypes، وتحليل الأكواد والأنماط الأمنية. | **JavaScript Security Analyzer** | [عرض المستوى](./Level-3-Advanced/README.md) |
+Follow the structured roadmap below to advance from raw syntax to advanced code audits:
 
----
-
-## 📁 هيكلية المجلدات ونظام اللغتين (Bilingual Architecture)
-
-جميع الدروس والتمارين والمشاريع متوفرة بالكامل بلغتين (**العربية 🇸🇦** و **الإنجليزية 🇬🇧**)، حيث يحتوي كل قسم على مجلد خاص بكل لغة:
-
-```plaintext
-01-JavaScript-Core/
-├── README.md
-├── Level-1-Basic/
-│   ├── README.md
-│   ├── Lessons/
-│   │   ├── ar/     # شروحات الدروس بالعربية
-│   │   └── en/     # English Lesson Guides
-│   ├── Exercises/
-│   │   ├── ar/     # تمارين وتطبيقات عملية بالعربية
-│   │   └── en/     # Hands-on Exercises in English
-│   └── Final-Project/
-│       ├── ar/     # وثائق وكود مشروع JavaScript Logic Toolkit بالعربية
-│       └── en/     # Project Documentation & Code in English
-├── Level-2-Foundation/
-│   ├── README.md
-│   ├── Lessons/
-│   │   ├── ar/
-│   │   └── en/
-│   ├── Practical-Applications/
-│   │   ├── ar/
-│   │   └── en/
-│   └── Final-Project/
-│       ├── ar/     # وثائق وكود مشروع API Explorer
-│       └── en/
-└── Level-3-Advanced/
-    ├── README.md
-    ├── Lessons/
-    │   ├── ar/
-    │   └── en/
-    ├── Testing-and-Review/
-    │   ├── ar/
-    │   └── en/
-    └── Final-Project/
-        ├── ar/     # وثائق وكود مشروع JavaScript Security Analyzer
-        └── en/
+```mermaid
+flowchart LR
+    L1["🟢 Level 1: Basic<br/>• Pure Syntax & Types<br/>• Control Flow & Loops<br/>• Functions & Data Structures<br/><b>Project: Logic Toolkit</b>"] --> L2["🟡 Level 2: Foundation<br/>• DOM Trees & Selectors<br/>• Event Lifecycle & Bubbling<br/>• Fetch API & HTTP Networking<br/><b>Project: API Explorer</b>"]
+    
+    L2 --> L3["🔴 Level 3: Advanced<br/>• Lexical Closures & 'this'<br/>• Prototype Chains & Pollution<br/>• Event Loop Concurrency<br/><b>Project: JS Security Analyzer</b>"]
+    
+    L3 --> Out(["🎯 Web Pentesting & Advanced Engineering"])
 ```
 
 ---
 
-## 🇬🇧 Track Overview (English)
+## 💡 Foundational Architecture: Core vs. Web Pentesting
 
-The **JavaScript Core** track focuses on building a deep, fundamental understanding of JavaScript, its runtime behavior, browser interaction, DOM manipulation, and asynchronous patterns.
+> [!IMPORTANT]
+> **Why We Decouple JavaScript Core from Web Security Testing:**  
+> - **JavaScript Core (This Track):** Teaches how the language functions natively, how memory is allocated on the stack and heap, how the browser DOM interprets nodes, and how asynchronous events are queued in the Event Loop.
+> - **JavaScript for Web Pentesting (Subsequent Specialized Track):** Applies this fundamental knowledge toward auditing, identifying, and exploiting browser-side vulnerabilities: **DOM-based XSS**, **DOM Open Redirects**, **Insecure `postMessage` handlers**, and **Prototype Pollution**.  
+> *A solid mastery of Core (especially Level 2 DOM flows and Level 3 prototype chains) is the non-negotiable prerequisite to mastering client-side application security!*
 
-### The 3 Structured Levels:
-1. **Level 1 — Basic:** Learn syntax, control flow, functions, data structures, and build pure programmatic logic.
-2. **Level 2 — Foundation:** Master DOM manipulation, event handling, browser APIs, HTTP networking (`fetch`), and DevTools debugging.
-3. **Level 3 — Advanced:** Understand internal execution mechanics, Event Loop, prototype chains, code review, testing, and security-aware patterns.
+---
 
-All content is dual-language formatted across dedicated `/ar` and `/en` folders for seamless learning.
+## 🗺️ Progression Matrix
+
+| Level | Pedagogical Goal | Deliverable Capstone | Direct Links |
+| :--- | :--- | :--- | :---: |
+| **Level 1 — Basic** | Read, reason through, and write pure JavaScript logic without relying on copy-pasting. Master types, control structures, and functional routines. | **JavaScript Logic Toolkit** | [Overview](./Level-1-Basic/README.md)<br>[Lessons](./Level-1-Basic/Lessons/en/01-introduction.md) |
+| **Level 2 — Foundation** | Understand how JavaScript drives the interactive web. Manipulate the DOM securely, handle event propagation, dispatch HTTP calls, and trace state in DevTools. | **API Explorer** | [Overview](./Level-2-Foundation/README.md)<br>[Applied Labs](./Level-2-Foundation/Practical-Applications/en/README.md) |
+| **Level 3 — Advanced** | Demystify internal runtime mechanics: the call stack, microtask queues, closure memory retention, prototype chains, and static code security auditing. | **JavaScript Security Analyzer** | [Overview](./Level-3-Advanced/README.md)<br>[Code Audits](./Level-3-Advanced/Testing-and-Review/en/README.md) |
+
+---
+
+## 🎯 Verification Criteria (How Do You Know You Have Finished Each Level?)
+
+1. **Level 1 Completion:** You can solve scalar algorithmic problems without copying solutions, explain variable scoping boundaries, and comfortably debug simple runtime exceptions.
+2. **Level 2 Completion:** You can construct a dynamic client-side interface, bind robust event listeners, dispatch asynchronous API requests, and trace variables via DevTools Breakpoints.
+3. **Level 3 Completion:** You can dissect complex asynchronous execution order, trace prototype property lookups, profile data flows for dangerous injection sinks, and write defensive unit tests.
+
+---
+
+## 🚀 Recommended Next Step
+Start immediately at:  
+👉 **[Level 1 — Lesson 01: Introduction & Runtime Environment](./Level-1-Basic/Lessons/en/01-introduction.md)**

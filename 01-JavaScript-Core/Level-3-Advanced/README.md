@@ -1,55 +1,52 @@
-# Level 3 — Advanced | المستوى الثالث: العمق الداخلي والتحليل الأمني
+# Level 3 — Advanced: Deep Runtime Mechanics & Security
 
-> 🌐 **اللغة / Language:** [العربية 🇸🇦](#-نظرة-عامة) | [English 🇬🇧](#-overview-english)
-
----
-
-## 🇸🇦 نظرة عامة
-
-- **الهدف:** فهم السلوك الداخلي الدقيق لمحركات JavaScript، وتتبع وقراءة الأكواد المعقدة، والتهيؤ الأمني المتين قبل الانتقال لاختبار الاختراق المتقدم.
-- **التركيز:** آليات التنفيذ، إدارة الذاكرة، الـ Prototype Chain، الـ Event Loop، ومراجعة الأكواد الكبيرة للبحث عن الثغرات والأنماط الخطرة.
-
-### 📋 قائمة الموضوعات (Syllabus)
-
-| # | المجال | الموضوعات والتفاصيل |
-| :-: | :--- | :--- |
-| **01** | **Execution & Scope** | البيئة المعجمية (Lexical Environment)، الإغلاقات (Closures)، والرفع (Hoisting) بشكل معمق. |
-| **02** | **The `this` Keyword** | قواعد تحديد `this` الأربعة، والدوال المرتبطة: `call`, `apply`, `bind`. |
-| **03** | **Prototypes & Inheritance** | سلسلة النماذج (Prototype Chain)، الوراثة، والآلية البرمجية لـ Prototype Pollution. |
-| **04** | **Advanced Functions** | الدوال العليا (Higher-Order Functions)، تركيب الدوال (Composition)، Currying والبرمجة الوظيفية. |
-| **05** | **Advanced Async** | تسلسل الوعود (Promise Chaining)، انتشار الأخطاء (Error Propagation)، و `Promise.allSettled`. |
-| **06** | **Event Loop & Concurrency** | مكدس الاستدعاء (Call Stack)، الـ Web APIs، طابور الـ Tasks و Microtasks، وتوقيت التنفيذ. |
-| **07** | **Classes & ES Modules** | الأصناف (Classes)، الوراثة الكلاسيكية، وتصدير واستيراد الوحدات (`import` / `export`). |
-| **08** | **Error Analysis & Stack Traces** | تتبع مسارات الأخطاء (Stack Traces)، كائنات الخطأ المخصصة، وتحليل حالات الانهيار. |
-| **09** | **Code Review & Flow** | قراءة المشاريع الكبيرة، إعادة الهيكلة (Refactoring)، وتتبع تدفق البيانات (Data Flow Analysis). |
-| **10** | **Testing & Assertions** | كتابة اختبارات الوحدة (Unit Testing)، شروط التحقق (Assertions)، واختبار الحالات الشاذة (Edge Cases). |
-| **11** | **Regex & Pattern Matching** | التعابير النمطية (Regular Expressions) المتقدمة ومعالجة النصوص وتجنب ثغرات ReDoS. |
-| **12** | **Modern Bundling & Minification** | التعامل مع الأكواد المضغوطة (Minified)، حزم البناء (Bundlers)، واستخدام ملفات الـ Source Maps. |
-| **13** | **Security-Aware Coding** | التعامل الآمن مع نصوص وخصائص الـ DOM والـ APIs الحساسة (`eval`, `Function`, `postMessage`). |
+> 🌐 **Language:** **English** | [🇸🇦 النسخة العربية (README.ar.md)](./README.ar.md)
 
 ---
 
-### 🎯 المهارات التي ستخرج بها من هذا المستوى
-- [x] فهم سبب وصول دالة معينة لقيمة ما بدقة، حتى مع تشابك مسارات التنفيذ المعقدة.
-- [x] تتبع Callbacks و Promises ومعرفة الترتيب الزمني الدقيق للـ Microtasks والـ Tasks.
-- [x] قراءة كائن معقد وتتبع الـ Prototype Chain واكتشاف التعديلات المشبوهة على النماذج.
-- [x] تحليل ملفات JavaScript الضخمة وتحديد الدوال والمسارات الحساسة للبيانات (Sinks & Sources).
-- [x] كتابة اختبارات قوية والتفريق بين خطأ منطقي عادي (Bug) وثغرة أمنية محتملة (Vulnerability).
-- [x] فهم الآليات البرمجية وراء الأنماط الخطرة (Unsafe Patterns) والقدرة على مراجعتها وتصحيحها.
+## 🎯 Educational Mission
+
+- **Goal:** Unpack the internal mechanical behavior of JavaScript engines (V8), trace asynchronous concurrency queues, audit prototype inheritance chains, and master static code security analysis.
+- **Core Focus:** Execution contexts, lexical closures, the `this` binding model, Event Loop microtask scheduling, prototype pollution primitives, and security-aware code refactoring.
 
 ---
 
-### 🏆 مشروع نهاية المستوى: JavaScript Security Analyzer
-- **الوصف:** أداة تحليل كود ساكن (Static Code Analysis Tool) تفحص ملفات JavaScript بحثاً عن أنماط أمنية مريبة (مثل استخدام `innerHTML` غير الآمن، `eval`، أو استقبال أحداث `message` بدون التحقق من `origin`)، وتعرض سطر الشبهة، وسبب الخطورة، والبديل الآمن المقترح، مع التفريق بين الشبهة وإثبات الثغرة.
-- 📁 **دليل المشروع بالعربية:** [`Final-Project/ar/README.md`](./Final-Project/ar/README.md)
-- 📁 **English Project Guide:** [`Final-Project/en/README.md`](./Final-Project/en/README.md)
+## 🧭 Level 3 Curriculum Directory
+
+| # | Topic Domain | Detailed Syllabus Topics | Direct Reference |
+| :-: | :--- | :--- | :--- |
+| **01** | **Execution & Lexical Scope** | Lexical Environments, Scope Chains, Closures memory structures, and advanced Hoisting mechanics. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **02** | **The `this` Keyword** | The 4 binding rules of `this` (Default, Implicit, Explicit via `call`/`apply`/`bind`, and Lexical Arrow Functions). | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **03** | **Prototypes & Inheritance** | Prototype chains (`__proto__` vs `prototype`), property shadow inheritance, and the runtime mechanics of Prototype Pollution. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **04** | **Advanced Functions** | Higher-Order Functions, function composition, currying, and functional pipeline paradigms. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **05** | **Advanced Asynchronous Flow** | Promise lifecycle states, error propagation flows, `Promise.allSettled`, and async pipeline controls. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **06** | **Event Loop & Concurrency** | V8 concurrency: Call Stack, Web APIs, Macrotask queue vs Microtask queue timing and starvation. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **07** | **Classes & ES Modules** | ES6 Class abstractions, private fields (`#`), inheritance, and ES Module semantics (`import`/`export`). | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **08** | **Error Analysis & Tracing** | Deep stack trace forensics, custom Error subclassing, and fatal exception mitigation. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **09** | **Code Review & Flow Analysis** | Architectural codebase navigation, Data Flow Analysis, Sinks/Sources tracing, and clean refactoring. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **10** | **Testing & Strict Assertions** | Unit testing harness architecture, strict assertion validation, and defensive edge-case testing. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **11** | **Regex & Pattern Matching** | Advanced Regular Expression engines, capture groups, lookaheads, and Regular Expression Denial of Service (ReDoS) prevention. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **12** | **Bundling & Source Maps** | Minification, tree-shaking, bundler outputs (Webpack, Vite), and Source Map symbol resolution. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **13** | **Security-Aware Coding** | Defensive DOM and string handling, auditing dangerous API sinks (`eval`, `new Function`, unvalidated `postMessage` origins). | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
 
 ---
 
-## 🇬🇧 Overview (English)
+## 🔍 Testing, Verification & Code Auditing Labs
+Deepen your architectural inspection skills:
+- 👉 [Level 3 Testing & Security Review (English)](./Testing-and-Review/en/README.md)
+- 👉 [معمل مراجعة الأكواد باللغة العربية](./Testing-and-Review/ar/README.md)
 
-- **Goal:** Deep-dive into JavaScript internal mechanics, execution contexts, prototype pollution primitives, event loop microtasks, and static code security auditing.
-- **Folders:**
-  - `Lessons/`: In-depth guides in both [`/ar`](./Lessons/ar/) and [`/en`](./Lessons/en/).
-  - `Testing-and-Review/`: Code review worksheets, testing drills, and reverse analysis.
-  - `Final-Project/`: The **JavaScript Security Analyzer** static auditing engine.
+---
+
+## 🏆 Capstone Project: JavaScript Security Analyzer
+Build and execute a static security analysis tool (SAST) auditing source code for hazardous patterns:
+- Detects dangerous execution sinks (`eval`, `new Function`).
+- Identifies unvalidated `postMessage` event listeners.
+- Flags potential DOM XSS and Prototype Pollution vectors.
+- 👉 [English Project Guide & Engine](./Final-Project/en/README.md)
+- 👉 [دليل وكود الأداة بالعربية](./Final-Project/ar/README.md)
+
+---
+
+## 🎓 Final Track Graduation Benchmark
+Upon concluding Level 3 and passing all static analyzer test benchmarks, you have officially mastered the complete **JavaScript Core Foundation**. You are fully equipped to specialize in client-side application security: **JavaScript for Web Pentesting**!
