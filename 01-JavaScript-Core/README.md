@@ -1,54 +1,72 @@
-# ⚡ 01 - JavaScript Core Track
+# ⚡ 01 - JavaScript Core & Security Engineering Track
 
 > 🌐 **Language:** **English** | [🇸🇦 النسخة العربية (README.ar.md)](./README.ar.md)
 
-Welcome to the **JavaScript Core Track**! This track is designed for software engineers, web developers, and security practitioners who seek a deep, unambiguous understanding of the JavaScript language, its runtime environments, execution contexts, and browser interactions.
+Welcome to the **JavaScript Core & Security Engineering Track**! This comprehensive guide is designed for developers and security engineers seeking a deep, unambiguous understanding of the JavaScript language, its browser execution mechanics, and modern client-side application security testing.
 
 ---
 
-## 🧭 The JavaScript Core Journey (Roadmap)
+## 🧭 Master Architectural Roadmap
 
-Follow the structured roadmap below to advance from raw syntax to advanced code audits:
+You do **NOT** need to finish all advanced core concepts before exploring pentesting.  
+Once you complete **Level 2 (Foundation)** in Core (understanding the DOM tree and data flow), you can immediately begin **Level 1 & Level 2 Pentesting** in parallel!
 
 ```mermaid
-flowchart LR
-    L1["🟢 Level 1: Basic<br/>• Pure Syntax & Types<br/>• Control Flow & Loops<br/>• Functions & Data Structures<br/><b>Project: Logic Toolkit</b>"] --> L2["🟡 Level 2: Foundation<br/>• DOM Trees & Selectors<br/>• Event Lifecycle & Bubbling<br/>• Fetch API & HTTP Networking<br/><b>Project: API Explorer</b>"]
-    
-    L2 --> L3["🔴 Level 3: Advanced<br/>• Lexical Closures & 'this'<br/>• Prototype Chains & Pollution<br/>• Event Loop Concurrency<br/><b>Project: JS Security Analyzer</b>"]
-    
-    L3 --> Out(["🎯 Web Pentesting & Advanced Engineering"])
+flowchart TD
+    subgraph CoreTrack ["JavaScript Core Foundations"]
+        C1["🟢 Core Level 1: Basic<br/>• Pure Syntax & Primitives<br/>• Control Flow, Loops & Functions<br/>• Basic Data Structures<br/><b>Project: Logic Toolkit</b>"] --> C2["🟡 Core Level 2: Foundation<br/>• Browser Environment (Window/Document)<br/>• DOM Trees, Events & Delegation<br/>• Fetch API, Promises & Async/Await<br/><b>Project: API Explorer</b>"]
+        C2 --> C3["🔴 Core Level 3: Advanced<br/>• Lexical Closures & 'this'<br/>• Prototype Chains & Inheritance<br/>• Event Loop Concurrency<br/><b>Project: Security Analyzer</b>"]
+    end
+
+    subgraph PentestTrack ["JavaScript for Web Pentesting"]
+        P1["🟢 Pentest Level 1: Basic<br/>• Client vs Server Boundaries<br/>• JS Recon & Endpoint Extraction<br/>• Browser DevTools Forensics<br/><b>Project: Recon & Code Review</b>"] --> P2["🟡 Pentest Level 2: Foundation<br/>• Sources, Sinks & Taint Flow<br/>• DOM XSS & Open Redirects<br/>• Insecure postMessage & Storage<br/><b>Project: Vulnerability Assessment</b>"]
+        P2 --> P3["🔴 Pentest Level 3: Advanced<br/>• DOM Clobbering & Mutation<br/>• Prototype Pollution Gadgets<br/>• Minified JS & Chaining<br/><b>Project: Security Engine + Lab</b>"]
+    end
+
+    C2 -.->|"⚡ Minimum Requirement Met: Jump In!"| P1
+    C2 -.->|"Parallel Testing"| P2
+    C3 -.->|"Deep Engine Mechanics"| P3
 ```
 
 ---
 
-## 💡 Foundational Architecture: Core vs. Web Pentesting
+## 📚 Tracks & Levels Directory
 
-> [!IMPORTANT]
-> **Why We Decouple JavaScript Core from Web Security Testing:**  
-> - **JavaScript Core (This Track):** Teaches how the language functions natively, how memory is allocated on the stack and heap, how the browser DOM interprets nodes, and how asynchronous events are queued in the Event Loop.
-> - **JavaScript for Web Pentesting (Subsequent Specialized Track):** Applies this fundamental knowledge toward auditing, identifying, and exploiting browser-side vulnerabilities: **DOM-based XSS**, **DOM Open Redirects**, **Insecure `postMessage` handlers**, and **Prototype Pollution**.  
-> *A solid mastery of Core (especially Level 2 DOM flows and Level 3 prototype chains) is the non-negotiable prerequisite to mastering client-side application security!*
-
----
-
-## 🗺️ Progression Matrix
-
-| Level | Pedagogical Goal | Deliverable Capstone | Direct Links |
-| :--- | :--- | :--- | :---: |
-| **Level 1 — Basic** | Read, reason through, and write pure JavaScript logic without relying on copy-pasting. Master types, control structures, and functional routines. | **JavaScript Logic Toolkit** | [Overview](./Level-1-Basic/README.md)<br>[Lessons](./Level-1-Basic/Lessons/en/01-introduction.md) |
-| **Level 2 — Foundation** | Understand how JavaScript drives the interactive web. Manipulate the DOM securely, handle event propagation, dispatch HTTP calls, and trace state in DevTools. | **API Explorer** | [Overview](./Level-2-Foundation/README.md)<br>[Applied Labs](./Level-2-Foundation/Practical-Applications/en/README.md) |
-| **Level 3 — Advanced** | Demystify internal runtime mechanics: the call stack, microtask queues, closure memory retention, prototype chains, and static code security auditing. | **JavaScript Security Analyzer** | [Overview](./Level-3-Advanced/README.md)<br>[Code Audits](./Level-3-Advanced/Testing-and-Review/en/README.md) |
+### 🧠 Phase A: JavaScript Core Track
+1. **[Level 1 — Basic: JavaScript Logic & Syntax](./Level-1-Basic/README.md)**  
+   Master language grammar, types, control flow, functions, and pure computational logic.  
+   *(Capstone: JavaScript Logic Toolkit)*
+2. **[Level 2 — Foundation: The Browser Environment & Web APIs](./Level-2-Foundation/README.md)**  
+   Master browser runtime mechanics, DOM manipulation, event lifecycles, and asynchronous networking.  
+   *(Capstone: API Explorer)*
+3. **[Level 3 — Advanced: Deep Runtime Mechanics](./Level-3-Advanced/README.md)**  
+   Demystify V8 internal mechanics: lexical closures, the `this` model, prototype chains, and the Event Loop.  
+   *(Capstone: JavaScript Security Analyzer)*
 
 ---
 
-## 🎯 Verification Criteria (How Do You Know You Have Finished Each Level?)
+### 🛡️ Phase B: Client-Side Security & Web Pentesting
+👉 **[Enter the JavaScript for Web Pentesting Master Track](./JavaScript-Web-Pentesting/README.md)**
 
-1. **Level 1 Completion:** You can solve scalar algorithmic problems without copying solutions, explain variable scoping boundaries, and comfortably debug simple runtime exceptions.
-2. **Level 2 Completion:** You can construct a dynamic client-side interface, bind robust event listeners, dispatch asynchronous API requests, and trace variables via DevTools Breakpoints.
-3. **Level 3 Completion:** You can dissect complex asynchronous execution order, trace prototype property lookups, profile data flows for dangerous injection sinks, and write defensive unit tests.
+1. **[Pentest Level 1 — Basic: Reconnaissance & Code Reading](./JavaScript-Web-Pentesting/Level-1-Basic-Pentesting/README.md)**  
+   Learn to map application attack surfaces, extract hidden endpoints, and use DevTools for forensic inspection.  
+   *(Capstone: JS Recon & Code Review Report)*
+2. **[Pentest Level 2 — Foundation: Flaw Testing & Verification](./JavaScript-Web-Pentesting/Level-2-Foundation-Pentesting/README.md)**  
+   Master Source-to-Sink Taint Flow analysis. Isolate real DOM XSS, DOM Open Redirects, and postMessage flaws from benign code smells.  
+   *(Capstone: Client-Side Vulnerability Assessment)*
+3. **[Pentest Level 3 — Advanced: Complex Internals & Chaining](./JavaScript-Web-Pentesting/Level-3-Advanced-Pentesting/README.md)**  
+   Dissect advanced client-side vulnerabilities: DOM Clobbering, Prototype Pollution gadget hunting, minified JS reversing, and vulnerability chaining.  
+   *(Capstone: Security Analyzer + Advanced Exploit Lab)*
+
+---
+
+## 🎯 Verification Criteria (How Do You Know You Have Finished Each Phase?)
+
+- **Core Finished:** You understand how JavaScript executes, can manipulate the DOM, and can trace asynchronous event timing.
+- **Pentesting Finished:** You do not just memorize payloads; you read client-side code, trace taint flows, prove tangible security impact in authorized labs, and author patch-ready remediation.
 
 ---
 
 ## 🚀 Recommended Next Step
-Start immediately at:  
-👉 **[Level 1 — Lesson 01: Introduction & Runtime Environment](./Level-1-Basic/Lessons/en/01-introduction.md)**
+- If you are new to JS: 👉 **[Start with Core Level 1](./Level-1-Basic/README.md)**
+- If you already know basic DOM & functions: 👉 **[Jump into Pentest Level 1](./JavaScript-Web-Pentesting/Level-1-Basic-Pentesting/README.md)**
