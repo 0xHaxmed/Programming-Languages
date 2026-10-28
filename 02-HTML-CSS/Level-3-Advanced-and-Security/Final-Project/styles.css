@@ -1,0 +1,334 @@
+/* ==========================================================================
+   CyberCommand Dashboard - Level 3 Capstone Stylesheet
+   BEM Architecture, CSS Custom Properties Design System & WCAG AA Accessibility
+   ========================================================================== */
+
+/* 1. Global Box Model & Resets */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2. Dynamic Token Palettes (Light & Dark Themes) */
+:root {
+    /* Color Palette Tokens */
+    --color-primary: hsl(217, 91%, 60%);
+    --color-primary-dark: hsl(224, 76%, 48%);
+    --color-success: hsl(158, 64%, 52%);
+    --color-danger: hsl(0, 84%, 60%);
+    
+    /* Layout Dimensions */
+    --header-height: 4rem;
+    --sidebar-width: 16rem;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Light Theme Variables */
+[data-theme="light"] {
+    --bg-page: hsl(210, 40%, 98%);
+    --bg-surface: #ffffff;
+    --bg-surface-raised: hsl(210, 40%, 96%);
+    --text-main: hsl(222, 47%, 11%);
+    --text-muted: hsl(215, 16%, 47%);
+    --border-subtle: hsl(214, 32%, 91%);
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Theme Variables (Default) */
+[data-theme="dark"] {
+    --bg-page: hsl(222, 47%, 11%);
+    --bg-surface: hsl(217, 33%, 17%);
+    --bg-surface-raised: hsl(215, 25%, 27%);
+    --text-main: hsl(210, 40%, 98%);
+    --text-muted: hsl(215, 20%, 65%);
+    --border-subtle: hsl(215, 25%, 27%);
+    --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+/* 3. Base Elements */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Screen reader only utility class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 4. High-Contrast Accessible Keyboard Focus */
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* 5. Master Dashboard Layout (BEM: .dashboard) */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Component */
+.dashboard__header {
+    height: var(--header-height);
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* User Badge Component */
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-md);
+    cursor: default;
+}
+
+.user-badge__avatar {
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    object-fit: cover;
+}
+
+.user-badge__name {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Dashboard Body: Sidebar + Main Content */
+.dashboard__body {
+    display: flex;
+    flex: 1;
+}
+
+/* Sidebar Component */
+.dashboard__sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-subtle);
+    padding: 1.5rem 1rem;
+}
+
+.nav-menu__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-menu__link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-menu__link:hover {
+    background-color: var(--bg-surface-raised);
+    color: var(--text-main);
+}
+
+.nav-menu__link--active {
+    background-color: var(--bg-surface-raised);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Main Content Component */
+.dashboard__content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* 6. Metrics Grid (Fluid CSS Grid with auto-fit) */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.metric-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+}
+
+.metric-card__title {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.metric-card__value {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.metric-card__trend {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.metric-card__trend--positive { color: var(--color-success); }
+.metric-card__trend--neutral { color: var(--color-primary); }
+
+/* 7. Panel Component */
+.panel {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+}
+
+.panel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.panel__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.panel__body {
+    padding: 1.5rem;
+}
+
+.audit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.audit-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.audit-list__item code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: var(--bg-surface-raised);
+    padding: 0.15rem 0.4rem;
+    border-radius: var(--radius-sm);
+}
+
+/* 8. Buttons & Badges */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.btn--outline {
+    background: transparent;
+    border-color: var(--border-subtle);
+    color: var(--text-main);
+}
+
+.btn--outline:hover {
+    background: var(--bg-surface-raised);
+}
+
+.badge {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+}
+
+.badge--success {
+    background: hsla(158, 64%, 52%, 0.15);
+    color: var(--color-success);
+}
+
+/* 9. Footer Landmark */
+.dashboard__footer {
+    padding: 1.25rem 2rem;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    background-color: var(--bg-surface);
+}
+
+/* 10. Responsive Breakpoint (< 768px Mobile Flow) */
+@media (max-width: 768px) {
+    .dashboard__body {
+        flex-direction: column;
+    }
+    .dashboard__sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+    .dashboard__content {
+        padding: 1.25rem;
+    }
+}

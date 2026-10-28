@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberCommand - Hardened Client Security Dashboard</title>
+    <!-- Content Security Policy: Strict client-side hardening -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com; font-src 'self';">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <!-- 1. Header Landmark (BEM: .dashboard__header) -->
+        <header class="dashboard__header">
+            <div class="header-brand">
+                <span class="header-brand__icon" aria-hidden="true">🛡️</span>
+                <span class="header-brand__name">Cyber<strong>Command</strong></span>
+            </div>
+
+            <div class="header-controls">
+                <!-- Theme Toggle Button with Accessible ARIA -->
+                <button type="button" class="btn btn--outline" id="theme-toggle" aria-label="Toggle Dark and Light theme">
+                    <span class="theme-icon" aria-hidden="true">🌓</span>
+                    <span class="theme-text">Switch Theme</span>
+                </button>
+
+                <!-- Secure Profile Badge -->
+                <div class="user-badge" tabindex="0" aria-label="Authenticated operator: Alex Vance (SecOps Tier 3)">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" 
+                         alt="Alex Vance avatar" 
+                         class="user-badge__avatar" 
+                         width="36" 
+                         height="36">
+                    <span class="user-badge__name">A. Vance</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. Main Workspace Layout -->
+        <div class="dashboard__body">
+            <!-- Sidebar Navigation Landmark -->
+            <aside class="dashboard__sidebar" aria-label="Security Dashboard Navigation">
+                <nav class="nav-menu">
+                    <ul class="nav-menu__list">
+                        <li class="nav-menu__item">
+                            <a href="#metrics" class="nav-menu__link nav-menu__link--active">
+                                <span class="nav-menu__icon" aria-hidden="true">📊</span>
+                                <span>Threat Telemetry</span>
+                            </a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="#audit" class="nav-menu__link">
+                                <span class="nav-menu__icon" aria-hidden="true">🔍</span>
+                                <span>DOM Taint Log</span>
+                            </a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="#settings" class="nav-menu__link">
+                                <span class="nav-menu__icon" aria-hidden="true">⚙️</span>
+                                <span>Hardening Baseline</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area Landmark -->
+            <main class="dashboard__content" id="main-content">
+                <!-- Section 1: KPI Telemetry Cards -->
+                <section class="metrics-grid" aria-labelledby="metrics-title">
+                    <h2 id="metrics-title" class="sr-only">Key Security Indicators</h2>
+
+                    <article class="metric-card">
+                        <span class="metric-card__title">Blocked DOM Injections</span>
+                        <div class="metric-card__value">142</div>
+                        <span class="metric-card__trend metric-card__trend--positive">+18% vs last week</span>
+                    </article>
+
+                    <article class="metric-card">
+                        <span class="metric-card__title">CSP Violation Reports</span>
+                        <div class="metric-card__value">0</div>
+                        <span class="metric-card__trend">Clean baseline</span>
+                    </article>
+
+                    <article class="metric-card">
+                        <span class="metric-card__title">Active Framed Iframes</span>
+                        <div class="metric-card__value">3</div>
+                        <span class="metric-card__trend metric-card__trend--neutral">100% Sandboxed</span>
+                    </article>
+
+                    <article class="metric-card">
+                        <span class="metric-card__title">WCAG a11y Compliance</span>
+                        <div class="metric-card__value">99.4%</div>
+                        <span class="metric-card__trend metric-card__trend--positive">Level AA Audited</span>
+                    </article>
+                </section>
+
+                <!-- Section 2: Hardening Checklist Verification Panel -->
+                <section class="card panel">
+                    <header class="panel__header">
+                        <h3 class="panel__title">Automated Client-Side Security Audit</h3>
+                        <span class="badge badge--success">HARDENED</span>
+                    </header>
+
+                    <div class="panel__body">
+                        <ul class="audit-list">
+                            <li class="audit-list__item">
+                                <span class="audit-status" aria-hidden="true">✅</span>
+                                <div>
+                                    <strong>Content Security Policy:</strong> <code>frame-ancestors 'none'</code> enforced. Zero clickjacking risk.
+                                </div>
+                            </li>
+                            <li class="audit-list__item">
+                                <span class="audit-status" aria-hidden="true">✅</span>
+                                <div>
+                                    <strong>Contextual HTML Encoding:</strong> <code>ENT_QUOTES</code> active. Protected against Dangling Markup.
+                                </div>
+                            </li>
+                            <li class="audit-list__item">
+                                <span class="audit-status" aria-hidden="true">✅</span>
+                                <div>
+                                    <strong>Subresource Integrity:</strong> All external assets verified with SHA-384 cryptographic hashes.
+                                </div>
+                            </li>
+                            <li class="audit-list__item">
+                                <span class="audit-status" aria-hidden="true">✅</span>
+                                <div>
+                                    <strong>WCAG Contrast & Keyboard:</strong> <code>:focus-visible</code> indicators and high contrast active.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- 3. Footer Landmark -->
+        <footer class="dashboard__footer">
+            <p>&copy; 2026 CyberCommand Operations. BEM Architecture & Defensive CSS Standards.</p>
+        </footer>
+    </div>
+
+    <!-- Theme Switcher Script -->
+    <script>
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', nextTheme);
+        });
+    </script>
+</body>
+</html>

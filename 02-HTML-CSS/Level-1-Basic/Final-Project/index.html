@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio Card - Level 1 Capstone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="container">
+        <!-- Semantic Profile Card Component -->
+        <article class="profile-card">
+            <header class="card-header">
+                <div class="avatar-wrapper">
+                    <!-- Secure, performant image with explicit dimensions & a11y alt -->
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80" 
+                         alt="Portrait of Alex Vance, Application Security Engineer" 
+                         class="avatar" 
+                         width="128" 
+                         height="128" 
+                         loading="lazy">
+                    <span class="status-badge" aria-label="Status: Available for Security Audits"></span>
+                </div>
+                <h1 class="dev-name">Alex Vance</h1>
+                <p class="dev-role">Application Security Engineer</p>
+            </header>
+
+            <section class="card-body">
+                <p class="dev-bio">
+                    Specializing in <strong>Client-Side Vulnerability Research</strong>, secure DOM architectures, and defensive CSS hardening. Passionate about eliminating XSS and building resilient web interfaces.
+                </p>
+
+                <h2 class="section-title">Core Competencies</h2>
+                <ul class="tags-list">
+                    <li class="tag">HTML5 Semantics</li>
+                    <li class="tag">CSS Box Model</li>
+                    <li class="tag">Web a11y (WCAG)</li>
+                    <li class="tag">CSP Hardening</li>
+                    <li class="tag">DOM Security</li>
+                </ul>
+            </section>
+
+            <footer class="card-footer">
+                <!-- Secure External Link with Reverse Tabnabbing Defense -->
+                <a href="https://github.com" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn btn-primary">
+                    View GitHub Repositories
+                </a>
+                <a href="mailto:alex@security.example" 
+                   class="btn btn-secondary">
+                    Contact Engineer
+                </a>
+            </footer>
+        </article>
+    </main>
+
+</body>
+</html>

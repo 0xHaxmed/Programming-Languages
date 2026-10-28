@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudShield - Autonomous Web Security Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 1. Header & Navigation Landmark -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">Cloud<strong>Shield</strong></span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#metrics">Live Metrics</a></li>
+                    <li><a href="#assessment">Audit Request</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#assessment" class="btn btn-primary">Request Audit</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Main Content Landmark -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <span class="badge">Next-Gen Client-Side Defense</span>
+                <h1 class="hero-title">Continuous Vulnerability Detection for Modern Web Apps</h1>
+                <p class="hero-subtitle">
+                    Automate DOM vulnerability audits, eliminate Client-Side Prototype Pollution, and protect your enterprise applications against advanced frontend threats.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#assessment" class="btn btn-primary btn-lg">Start Free Assessment</a>
+                    <a href="#features" class="btn btn-outline btn-lg">Explore Architecture</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <header class="section-header">
+                    <h2>Engineered for High-Assurance Applications</h2>
+                    <p>Comprehensive protection across all layers of the client-side execution model.</p>
+                </header>
+
+                <div class="features-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>DOM Taint Tracing</h3>
+                        <p>Continuous dynamic tracing of untrusted sources to dangerous sinks, preventing zero-day DOM XSS before release.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Prototype Hardening</h3>
+                        <p>Real-time telemetry and deep freeze mechanisms that stop Object prototype pollution and gadget execution.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Iframe Sandboxing</h3>
+                        <p>Enforced origin isolation and Content Security Policy (CSP) headers protecting users from framejacking.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>CVSS v3.1 Telemetry</h3>
+                        <p>Instant scoring, reproduction proof-of-concepts, and developer-friendly remediation guidance.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section: Audit Request -->
+        <section id="assessment" class="form-section">
+            <div class="container form-container">
+                <header class="section-header">
+                    <h2>Schedule an Application Security Assessment</h2>
+                    <p>Fill out the technical audit request below to receive a baseline security report.</p>
+                </header>
+
+                <form action="#" method="POST" class="audit-form" novalidate>
+                    <div class="form-group">
+                        <label for="contact-name">Lead Engineer / Contact Name</label>
+                        <input type="text" id="contact-name" name="name" required minlength="3" autocomplete="name" placeholder="Alex Vance">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="work-email">Corporate Work Email</label>
+                        <input type="email" id="work-email" name="email" required autocomplete="email" placeholder="alex@enterprise.corp">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="app-scope">Application Environment</label>
+                        <select id="app-scope" name="scope" required>
+                            <option value="" disabled selected>Select deployment tier...</option>
+                            <option value="production">Public Cloud Production</option>
+                            <option value="staging">Staging Pre-Release</option>
+                            <option value="internal">Internal Enterprise Network</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="audit-notes">Architecture Notes & Specific Concerns</label>
+                        <textarea id="audit-notes" name="notes" rows="4" placeholder="Detail any critical frameworks (React, Angular, Vue) or third-party scripts..."></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span>I authorize CloudShield to conduct non-destructive client-side vulnerability scans.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Submit Audit Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. Footer Landmark -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">🛡️</span>
+                <span>CloudShield Enterprise</span>
+            </div>
+            <p class="footer-legal">&copy; 2026 CloudShield Systems. Strictly for authorized ethical evaluations.</p>
+            <div class="footer-links">
+                <a href="#" target="_blank" rel="noopener noreferrer">Security Policy</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Responsible Disclosure</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
