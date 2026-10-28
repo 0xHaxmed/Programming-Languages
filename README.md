@@ -68,18 +68,6 @@ Every language track in this repository adheres to strict pedagogical principles
 
 ---
 
-## 🧭 How to Begin
-
-The repository is built for self-paced, progressive learning:
-
-1. **Web Foundations & Interactive Logic:**  
-   Begin immediately with the comprehensive JavaScript track:  
-   👉 **[Start with JavaScript Level 1: Basic Logic & Syntax](./01-JavaScript-Core/Level-1-Basic/README.md)**
-2. **Track Progression:** Complete the lessons, solve the dedicated challenge exercises, and run the capstone assertion suites.
-3. **Language Toggle:** You can switch between English and Arabic at any point using the top-level language switcher on every file.
-
----
-
 <p align="center">
   Built with ❤️ for developers and security engineers worldwide • Bilingual English / العربية
 </p>
