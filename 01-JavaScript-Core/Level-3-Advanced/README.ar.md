@@ -15,19 +15,19 @@
 
 | # | المجال | الموضوعات والتفاصيل | الروابط المباشرة |
 | :-: | :--- | :--- | :--- |
-| **01** | **التنفيذ والنطاق** | البيئة المعجمية (Lexical Environment)، الإغلاقات (Closures)، وفهم الـ Hoisting المتقدم. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **02** | **كلمة `this`** | قواعد تحديد `this` الأربعة: الافتراضي، الضمني، الصريح (`call`, `apply`, `bind`)، والدوال السهمية. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **03** | **النماذج والوراثة** | كائن `__proto__` و `prototype`، سلسلة النماذج، والآلية البرمجية لثغرات Prototype Pollution. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **04** | **الدوال المتقدمة** | الدوال العليا (Higher-Order Functions)، الـ Currying، وتركيب الدوال (Function Composition). | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **05** | **التزامن المتقدم** | تسلسل الوعود (Promise Chaining)، انتشار ومعالجة الأخطاء، و `Promise.allSettled`. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **06** | **حلقة الأحداث Event Loop** | محرك المتصفح: الـ Call Stack، الـ Web APIs، طابور الـ Tasks و Microtasks وترتيب التنفيذ الدقيق. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **07** | **الكلاسات والوحدات** | الأصناف (Classes)، الوراثة، ونظام الوحدات الحديث (ES Modules: `import` / `export`). | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **08** | **تحليل الأخطاء** | قراءة وتحليل الـ Stack Traces المعقدة، كائنات الخطأ المخصصة، وتتبع حالات الانهيار. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **09** | **مراجعة الأكواد وتدفق البيانات** | قراءة المشاريع الكبيرة، تتبع مسارات تدفق البيانات (Data Flow)، وإعادة الهيكلة الآمنة. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **10** | **الاختبارات والشروط** | بناء اختبارات الوحدة (Unit Testing)، شروط التحقق الصارمة، وتغطية الحالات الشاذة (Edge Cases). | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **11** | **التعابير النمطية Regex** | التعابير النمطية المتقدمة، فحص المدخلات، وتجنب هجمات الحرمان من الخدمة ReDoS. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **12** | **حزم البناء و Source Maps** | التعامل مع الأكواد المضغوطة (Minified)، أدوات الحزم (Bundlers)، واستخدام ملفات Source Maps. | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
-| **13** | **البرمجة الواعية أمنياً** | التعامل الآمن مع نصوص وخصائص الـ DOM ومراجعة الـ APIs الحساسة (`eval`, `postMessage`). | [دليل الدروس](./Lessons/ar/README.md) / [English](./Lessons/en/README.md) |
+| **01** | **التنفيذ والنطاق** | البيئة المعجمية (Lexical Environment)، الإغلاقات (Closures)، وفهم الـ Hoisting المتقدم. | [عربي](./Lessons/ar/01-execution-and-scope.md) / [English](./Lessons/en/01-execution-and-scope.md) |
+| **02** | **كلمة `this`** | قواعد تحديد `this` الأربعة: الافتراضي، الضمني، الصريح (`call`, `apply`, `bind`)، والدوال السهمية. | [عربي](./Lessons/ar/02-the-this-keyword.md) / [English](./Lessons/en/02-the-this-keyword.md) |
+| **03** | **النماذج والوراثة** | كائن `__proto__` و `prototype`، سلسلة النماذج، والآلية البرمجية لثغرات Prototype Pollution. | [عربي](./Lessons/ar/03-prototypes-and-inheritance.md) / [English](./Lessons/en/03-prototypes-and-inheritance.md) |
+| **04** | **الدوال المتقدمة** | الدوال العليا (Higher-Order Functions)، الـ Currying، وتركيب الدوال (Function Composition). | [عربي](./Lessons/ar/04-advanced-functions.md) / [English](./Lessons/en/04-advanced-functions.md) |
+| **05** | **التزامن المتقدم** | تسلسل الوعود (Promise Chaining)، انتشار ومعالجة الأخطاء، و `Promise.allSettled`. | [عربي](./Lessons/ar/05-advanced-async.md) / [English](./Lessons/en/05-advanced-async.md) |
+| **06** | **حلقة الأحداث Event Loop** | محرك المتصفح: الـ Call Stack، الـ Web APIs، طابور الـ Tasks و Microtasks وترتيب التنفيذ الدقيق. | [عربي](./Lessons/ar/06-event-loop-concurrency.md) / [English](./Lessons/en/06-event-loop-concurrency.md) |
+| **07** | **الكلاسات والوحدات** | الأصناف (Classes)، الوراثة، ونظام الوحدات الحديث (ES Modules: `import` / `export`). | [عربي](./Lessons/ar/07-classes-and-modules.md) / [English](./Lessons/en/07-classes-and-modules.md) |
+| **08** | **تحليل الأخطاء** | قراءة وتحليل الـ Stack Traces المعقدة، كائنات الخطأ المخصصة، وتتبع حالات الانهيار. | [عربي](./Lessons/ar/08-error-analysis.md) / [English](./Lessons/en/08-error-analysis.md) |
+| **09** | **مراجعة الأكواد وتدفق البيانات** | قراءة المشاريع الكبيرة، تتبع مسارات تدفق البيانات (Data Flow)، وإعادة الهيكلة الآمنة. | [عربي](./Lessons/ar/09-code-review-and-flow.md) / [English](./Lessons/en/09-code-review-and-flow.md) |
+| **10** | **الاختبارات والشروط** | بناء اختبارات الوحدة (Unit Testing)، شروط التحقق الصارمة، وتغطية الحالات الشاذة (Edge Cases). | [عربي](./Lessons/ar/10-testing-and-assertions.md) / [English](./Lessons/en/10-testing-and-assertions.md) |
+| **11** | **التعابير النمطية Regex** | التعابير النمطية المتقدمة، فحص المدخلات، وتجنب هجمات الحرمان من الخدمة ReDoS. | [عربي](./Lessons/ar/11-regex-and-text.md) / [English](./Lessons/en/11-regex-and-text.md) |
+| **12** | **حزم البناء و Source Maps** | التعامل مع الأكواد المضغوطة (Minified)، أدوات الحزم (Bundlers)، واستخدام ملفات Source Maps. | [عربي](./Lessons/ar/12-modern-bundling-sourcemaps.md) / [English](./Lessons/en/12-modern-bundling-sourcemaps.md) |
+| **13** | **البرمجة الواعية أمنياً** | التعامل الآمن مع نصوص وخصائص الـ DOM ومراجعة الـ APIs الحساسة (`eval`, `postMessage`). | [عربي](./Lessons/ar/13-security-aware-coding.md) / [English](./Lessons/en/13-security-aware-coding.md) |
 
 ---
 

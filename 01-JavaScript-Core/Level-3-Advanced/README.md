@@ -15,19 +15,19 @@
 
 | # | Topic Domain | Detailed Syllabus Topics | Direct Reference |
 | :-: | :--- | :--- | :--- |
-| **01** | **Execution & Lexical Scope** | Lexical Environments, Scope Chains, Closures memory structures, and advanced Hoisting mechanics. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **02** | **The `this` Keyword** | The 4 binding rules of `this` (Default, Implicit, Explicit via `call`/`apply`/`bind`, and Lexical Arrow Functions). | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **03** | **Prototypes & Inheritance** | Prototype chains (`__proto__` vs `prototype`), property shadow inheritance, and the runtime mechanics of Prototype Pollution. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **04** | **Advanced Functions** | Higher-Order Functions, function composition, currying, and functional pipeline paradigms. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **05** | **Advanced Asynchronous Flow** | Promise lifecycle states, error propagation flows, `Promise.allSettled`, and async pipeline controls. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **06** | **Event Loop & Concurrency** | V8 concurrency: Call Stack, Web APIs, Macrotask queue vs Microtask queue timing and starvation. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **07** | **Classes & ES Modules** | ES6 Class abstractions, private fields (`#`), inheritance, and ES Module semantics (`import`/`export`). | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **08** | **Error Analysis & Tracing** | Deep stack trace forensics, custom Error subclassing, and fatal exception mitigation. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **09** | **Code Review & Flow Analysis** | Architectural codebase navigation, Data Flow Analysis, Sinks/Sources tracing, and clean refactoring. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **10** | **Testing & Strict Assertions** | Unit testing harness architecture, strict assertion validation, and defensive edge-case testing. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **11** | **Regex & Pattern Matching** | Advanced Regular Expression engines, capture groups, lookaheads, and Regular Expression Denial of Service (ReDoS) prevention. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **12** | **Bundling & Source Maps** | Minification, tree-shaking, bundler outputs (Webpack, Vite), and Source Map symbol resolution. | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
-| **13** | **Security-Aware Coding** | Defensive DOM and string handling, auditing dangerous API sinks (`eval`, `new Function`, unvalidated `postMessage` origins). | [English](./Lessons/en/README.md) / [عربي](./Lessons/ar/README.md) |
+| **01** | **Execution & Lexical Scope** | Lexical Environments, Scope Chains, Closures memory structures, and advanced Hoisting mechanics. | [English](./Lessons/en/01-execution-and-scope.md) / [عربي](./Lessons/ar/01-execution-and-scope.md) |
+| **02** | **The `this` Keyword** | The 4 binding rules of `this` (Default, Implicit, Explicit via `call`/`apply`/`bind`, and Lexical Arrow Functions). | [English](./Lessons/en/02-the-this-keyword.md) / [عربي](./Lessons/ar/02-the-this-keyword.md) |
+| **03** | **Prototypes & Inheritance** | Prototype chains (`__proto__` vs `prototype`), property shadow inheritance, and the runtime mechanics of Prototype Pollution. | [English](./Lessons/en/03-prototypes-and-inheritance.md) / [عربي](./Lessons/ar/03-prototypes-and-inheritance.md) |
+| **04** | **Advanced Functions** | Higher-Order Functions, function composition, currying, and functional pipeline paradigms. | [English](./Lessons/en/04-advanced-functions.md) / [عربي](./Lessons/ar/04-advanced-functions.md) |
+| **05** | **Advanced Asynchronous Flow** | Promise lifecycle states, error propagation flows, `Promise.allSettled`, and async pipeline controls. | [English](./Lessons/en/05-advanced-async.md) / [عربي](./Lessons/ar/05-advanced-async.md) |
+| **06** | **Event Loop & Concurrency** | V8 concurrency: Call Stack, Web APIs, Macrotask queue vs Microtask queue timing and starvation. | [English](./Lessons/en/06-event-loop-concurrency.md) / [عربي](./Lessons/ar/06-event-loop-concurrency.md) |
+| **07** | **Classes & ES Modules** | ES6 Class abstractions, private fields (`#`), inheritance, and ES Module semantics (`import`/`export`). | [English](./Lessons/en/07-classes-and-modules.md) / [عربي](./Lessons/ar/07-classes-and-modules.md) |
+| **08** | **Error Analysis & Tracing** | Deep stack trace forensics, custom Error subclassing, and fatal exception mitigation. | [English](./Lessons/en/08-error-analysis.md) / [عربي](./Lessons/ar/08-error-analysis.md) |
+| **09** | **Code Review & Flow Analysis** | Architectural codebase navigation, Data Flow Analysis, Sinks/Sources tracing, and clean refactoring. | [English](./Lessons/en/09-code-review-and-flow.md) / [عربي](./Lessons/ar/09-code-review-and-flow.md) |
+| **10** | **Testing & Strict Assertions** | Unit testing harness architecture, strict assertion validation, and defensive edge-case testing. | [English](./Lessons/en/10-testing-and-assertions.md) / [عربي](./Lessons/ar/10-testing-and-assertions.md) |
+| **11** | **Regex & Pattern Matching** | Advanced Regular Expression engines, capture groups, lookaheads, and Regular Expression Denial of Service (ReDoS) prevention. | [English](./Lessons/en/11-regex-and-text.md) / [عربي](./Lessons/ar/11-regex-and-text.md) |
+| **12** | **Bundling & Source Maps** | Minification, tree-shaking, bundler outputs (Webpack, Vite), and Source Map symbol resolution. | [English](./Lessons/en/12-modern-bundling-sourcemaps.md) / [عربي](./Lessons/ar/12-modern-bundling-sourcemaps.md) |
+| **13** | **Security-Aware Coding** | Defensive DOM and string handling, auditing dangerous API sinks (`eval`, `new Function`, unvalidated `postMessage` origins). | [English](./Lessons/en/13-security-aware-coding.md) / [عربي](./Lessons/ar/13-security-aware-coding.md) |
 
 ---
 
